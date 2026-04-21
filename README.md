@@ -84,3 +84,11 @@ flutter pub get
 # Jalankan aplikasi
 flutter run
 ```
+
+## 📸 Screenshot Aplikasi
+
+![Screenshot 1](foto/WhatsApp%20Image%202026-04-21%20at%2008.25.40.jpeg)
+
+![Screenshot 2](foto/WhatsApp%20Image%202026-04-21%20at%2008.25.53.jpeg)
+
+![Screenshot 3](foto/WhatsApp%20Image%202026-04-21%20at%2008.26.07.jpeg)
