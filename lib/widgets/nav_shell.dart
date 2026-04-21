@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../screens/home_screen.dart';
-import '../screens/order_screen.dart';
 import '../screens/profile_screen.dart';
 
 class NavShell extends StatefulWidget {
@@ -14,9 +13,9 @@ class _NavShellState extends State<NavShell> {
   int _index = 0;
 
   // IndexedStack: screen tidak rebuild saat ganti tab
+  // OrderScreen TIDAK dimasukkan di sini — harus dibuka dari DetailScreen
   static const _screens = [
     HomeScreen(),
-    OrderScreen(),
     ProfileScreen(),
   ];
 
@@ -29,7 +28,16 @@ class _NavShellState extends State<NavShell> {
 
       // FAB tengah untuk shortcut pesan
       floatingActionButton: FloatingActionButton(
-        onPressed: () => setState(() => _index = 1),
+        onPressed: () {
+          setState(() => _index = 0);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('🛒 Pilih jasa dulu dari Beranda untuk memesan'),
+              behavior: SnackBarBehavior.floating,
+              duration: Duration(seconds: 2),
+            ),
+          );
+        },
         backgroundColor: Theme.of(context).colorScheme.secondary,
         foregroundColor: Colors.white,
         tooltip: 'Pesan Jasa',
@@ -56,11 +64,24 @@ class _NavShellState extends State<NavShell> {
 
             const SizedBox(width: 48), // ruang untuk FAB
 
-            _NavBtn(icon: Icons.receipt_long_outlined, label: 'Pesanan',
-                selected: _index == 1, onTap: () => setState(() => _index = 1)),
+            _NavBtn(
+                icon: Icons.receipt_long_outlined,
+                label: 'Pesanan',
+                selected: false,
+                onTap: () {
+                  // Arahkan ke Beranda & beri info
+                  setState(() => _index = 0);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('🛒 Pilih jasa dulu dari Beranda untuk memesan'),
+                      behavior: SnackBarBehavior.floating,
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                }),
 
             _NavBtn(icon: Icons.person_outline, label: 'Profil',
-                selected: _index == 2, onTap: () => setState(() => _index = 2)),
+                selected: _index == 1, onTap: () => setState(() => _index = 1)),
           ],
         ),
       ),

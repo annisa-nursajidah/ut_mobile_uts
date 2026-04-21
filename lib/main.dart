@@ -30,7 +30,7 @@ class SobatBeresApp extends StatelessWidget {
           backgroundColor: _primary,
           foregroundColor: Colors.white,
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           elevation: 2,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         ),
