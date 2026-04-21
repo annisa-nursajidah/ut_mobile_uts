@@ -4,7 +4,7 @@ Aplikasi mobile marketplace jasa berbasis Flutter yang menghubungkan pengguna de
 
 ## 👥 Anggota Kelompok
 
-| No | Nama | NIM |
+| No | Nama | NPM |
 |----|------|-----|
 | 1 | Dennis Ardiyansyah | 24082010011 |
 | 2 | Fatur Rachman P.N.E | 24082010021 |
